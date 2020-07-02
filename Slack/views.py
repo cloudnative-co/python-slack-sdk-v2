@@ -22,19 +22,19 @@ class Views(Base):
     @formation
     def open(self, trigger_id: str, view: dict, payload: dict = None):
         path = self.path[sys._getframe().f_code.co_name]
-        return self.http_request(method="get", path=path, payload=payload)
+        return self.http_request(method="post", path=path, payload=payload)
 
     @formation
     def publish(
         self, user_id: str, view: dict, hash: str = None, payload: dict = None
     ):
         path = self.path[sys._getframe().f_code.co_name]
-        return self.http_request(method="get", path=path, payload=payload)
+        return self.http_request(method="post", path=path, payload=payload)
 
     @formation
     def push(self, trigger_id: str, view: dict, payload: dict = None):
         path = self.path[sys._getframe().f_code.co_name]
-        return self.http_request(method="get", path=path, payload=payload)
+        return self.http_request(method="post", path=path, payload=payload)
 
     @formation
     def update(
@@ -42,4 +42,4 @@ class Views(Base):
         view_id: str = None, payload: dict = None
     ):
         path = self.path[sys._getframe().f_code.co_name]
-        return self.http_request(method="get", path=path, payload=payload)
+        return self.http_request(method="post", path=path, payload=payload)
