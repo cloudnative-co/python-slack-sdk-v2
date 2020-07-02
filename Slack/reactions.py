@@ -21,7 +21,10 @@ class Reactions(Base):
     }
 
     @formation
-    def add(self, channel: str, timestamp: str, payload: dict = None):
+    def add(
+        self, channel: str, name: str, timestamp: str,
+        payload: dict = None
+    ):
         path = self.path[sys._getframe().f_code.co_name]
         return self.http_request(method="post", path=path, payload=payload)
 

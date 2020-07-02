@@ -30,6 +30,7 @@ class Client(Base):
     _apps: Apps = None
     _bots: Bots = None
     _calls: Calls = None
+    _chat: Chat = None
     _conv: Conversations = None
     _dialog: Dialog = None
     _dnd: Dnd = None

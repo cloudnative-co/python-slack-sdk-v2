@@ -204,9 +204,9 @@ Maps = {
         "timestamp": {timestamp}
     }}""",
     "Reactions.remove": """{{
-        "name": {name"},
+        "name": {name},
         "channel": {channel},
-        "file": {name},
+        "file": {file},
         "file_comment": {file_comment},
         "timestamp": {timestamp}
     }}""",

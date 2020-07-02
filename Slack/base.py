@@ -71,7 +71,6 @@ class Base(object):
                 try:
                     bf.write(value)
                 except Exception as e:
-                    print(value)
                     raise e
                 bf.write(b'\r\n')
         if files is not None:

@@ -34,7 +34,6 @@ def get_arguments(args: dict, keys: list = None, ignores: list = None):
 
 
 def parse_values(value):
-    print(value)
     if value is None:
         value = "null"
     elif isinstance(value, bool):
@@ -98,7 +97,6 @@ def formation(f):
         method_name = f.__qualname__
         maps = Maps[method_name]
         str_params = maps.format(**_kwargs)
-        print(str_params)
         payload = json.loads(str_params)
         payload = remove_none(payload)
         kwargs["payload"] = payload

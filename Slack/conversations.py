@@ -66,7 +66,7 @@ class Conversations(Base):
         channel: str,
         cursor: str = None,
         inclusive: bool = False,
-        latest: str = "now",
+        latest: str = None,
         limit: int = 100,
         oldest: float = 0
     ):

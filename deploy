@@ -1,8 +1,10 @@
 #!/bin/sh
 . ./parameter.cfg
 rm -rf .aws-sam
-rm -rf ./lib/python/*
-pip install -t ./lib/python/ -r requirements.txt
+rm -rf lib/python
+mkdir -p lib/python
+cp -r Slack lib/python
+sam build
 cd .aws-sam/build
 aws cloudformation package \
     --region $REGION \

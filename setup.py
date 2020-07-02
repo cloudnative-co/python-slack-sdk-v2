@@ -6,8 +6,7 @@ setup(
     description="Slack SDK for Python 3.6",
     author="sebastian",
     author_email="seba@cloudnative.co.jp",
-    packages=find_packages("lib/python"),
-    package_dir={'': "lib/python"},
+    packages=find_packages(),
     install_requires=[
     ],
     entry_points={
