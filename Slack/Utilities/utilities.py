@@ -43,6 +43,8 @@ def parse_values(value):
     elif isinstance(value, datetime.datetime):
         value = value.timestamp()
         value = '"{}"'.format(value)
+    elif isinstance(value, dict):
+        value = json.dumps(value)
     elif isinstance(value, list):
         if len(value) == 1:
             value = parse_values(value[0])
