@@ -274,7 +274,7 @@ Maps = {
     }}""",
     "Views.push": """{{
         "trigger_id": {trigger_id},
-        "view": {view},
+        "view": {view}
     }}""",
     "Views.update": """{{
         "view": {view},
