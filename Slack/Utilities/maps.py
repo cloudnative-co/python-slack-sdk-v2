@@ -273,7 +273,7 @@ Maps = {
         "hash": {hash}
     }}""",
     "Views.push": """{{
-        "user_id": {user_id},
+        "trigger_id": {trigger_id},
         "view": {view},
     }}""",
     "Views.update": """{{
