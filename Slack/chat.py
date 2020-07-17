@@ -44,7 +44,10 @@ class Chat(Base):
         "get_permalink": "chat.getPermalink",
         "me_message": "chat.meMessage",
         "post_ephemeral": "chat.postEphemeral",
-        "post_message": "chat.postMessage"
+        "post_message": "chat.postMessage",
+        "schedule_message": "chat.scheduleMessage",
+        "unfurl": "chat.unfurl",
+        "update": "chat.update"
     }
 
     __scheduled_messages = None
@@ -111,7 +114,7 @@ class Chat(Base):
         return self.http_request(method="post", path=path, payload=payload)
 
     @formation
-    def schedule_message(
+    def unfurl(
         self, channel: str, ts: float, unfurls: str,
         user_auth_message: str = None, user_auth_required: str = None,
         user_auth_url: str = None, payload: dict = None
@@ -120,7 +123,7 @@ class Chat(Base):
         return self.http_request(method="post", path=path, payload=payload)
 
     @formation
-    def update_message(
+    def update(
         self, channel: str, text: str, ts: str, as_user: bool = False,
         attachments: dict = None, blocks: dict = None, link_names: bool = True,
         parse: str = None, payload: dict = None
