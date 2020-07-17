@@ -100,7 +100,7 @@ Maps = {
         "unfurls": {unfurls},
         "user_auth_message": {user_auth_message},
         "user_auth_required": {user_auth_required},
-        "user_auth_url": {user_auth_url},
+        "user_auth_url": {user_auth_url}
     }}""",
     "Chat.update_message": """{{
         "channel": {channel},
@@ -110,7 +110,7 @@ Maps = {
         "blocks": {blocks},
         "link_names": {link_names},
         "parse": {parse},
-        "text": {text},
+        "text": {text}
     }}""",
     "Conversations.archive": """{{
         "channel": {channel}
