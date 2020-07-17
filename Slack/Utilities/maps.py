@@ -102,7 +102,7 @@ Maps = {
         "user_auth_required": {user_auth_required},
         "user_auth_url": {user_auth_url},
     }}""",
-    "Chat.update": """{{
+    "Chat.update_message": """{{
         "channel": {channel},
         "ts": {ts},
         "as_user": {as_user},
