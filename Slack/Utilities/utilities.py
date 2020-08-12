@@ -39,6 +39,7 @@ def parse_values(value):
     elif isinstance(value, bool):
         value = "true" if value else "false"
     elif isinstance(value, str):
+        value = value.replace("\n", "\\n")
         value = '"{}"'.format(value)
     elif isinstance(value, datetime.datetime):
         value = value.timestamp()
