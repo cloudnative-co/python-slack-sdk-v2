@@ -1,4 +1,5 @@
 #!/bin/sh
+PROJECT_NAME=LayerSlack
 if [ -z $S3_BUCKET ]; then
     . ./parameter.cfg
 fi
