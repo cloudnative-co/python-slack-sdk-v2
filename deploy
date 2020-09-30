@@ -1,5 +1,10 @@
 #!/bin/sh
-. ./parameter.cfg
+if [ -z $S3_BUCKET ]; then
+    . ./parameter.cfg
+fi
+if [ -z $REGION ]; then
+    . ./parameter.cfg
+fi
 rm -rf .aws-sam
 rm -rf lib/python
 mkdir -p lib/python
