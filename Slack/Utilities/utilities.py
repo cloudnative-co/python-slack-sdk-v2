@@ -40,6 +40,9 @@ def parse_values(value):
         value = "true" if value else "false"
     elif isinstance(value, str):
         value = value.replace("\n", "\\n")
+        value = value.replace("\r", "\\r")
+        value = value.replace("\t", "\\t")
+        value = value.replace("\u3000", " ")
         value = '"{}"'.format(value)
     elif isinstance(value, datetime.datetime):
         value = value.timestamp()
@@ -79,6 +82,10 @@ def formation(f):
                 if len(tmp_lst) == 0:
                     continue
                 v = tmp_lst
+            if isinstance(v, str):
+                v = v.replace("\\r", "")
+                v = v.replace("\\t", "\t")
+                v = v.replace("\\n", "\n")
             result[k] = v
         if len(result) == 0:
             return None
