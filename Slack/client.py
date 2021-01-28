@@ -28,6 +28,7 @@ from .views import Views
 class Client(Base):
     _api: Api = None
     _apps: Apps = None
+    _auth: Auth = None
     _bots: Bots = None
     _calls: Calls = None
     _chat: Chat = None
@@ -85,7 +86,7 @@ class Client(Base):
 
     @property
     def dialog(self):
-        self._dialog = self._dialog if self._dialog else dialog(client=self)
+        self._dialog = self._dialog if self._dialog else Dialog(client=self)
         return self._dialog
 
     @property
