@@ -117,10 +117,11 @@ def signing_secret(
     signing_secret: str,
     request_timestamp: str,
     signature: str,
-    body
+    body,
+    debug: bool = False
 ):
     if abs(time.time() - int(request_timestamp)) > 60 * 5:
-        if aws_request_id != "debug":
+        if not debug:
             raise Exception("Timestamp Invalid")
 
     message = "v0:{}:{}".format(request_timestamp, body)
