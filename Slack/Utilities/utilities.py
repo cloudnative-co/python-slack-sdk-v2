@@ -112,3 +112,43 @@ def formation(f):
         kwargs["payload"] = payload
         return f(*args, **kwargs)
     return wrapper
+
+def signing_secret(
+    signing_secret: str,
+    request_timestamp: str,
+    signature: str,
+    body
+):
+    if abs(time.time() - int(request_timestamp)) > 60 * 5:
+        if aws_request_id != "debug":
+            raise Exception("Timestamp Invalid")
+
+    message = "v0:{}:{}".format(request_timestamp, body)
+    message_bytes = bytes(message, 'UTF-8')
+    request_hash = 'v0=' + hmac.new(
+        str.encode(signing_secret),
+        message_bytes,
+        hashlib.sha256
+    ).hexdigest()
+
+    result = False
+    if hasattr(hmac, "compare_digest"):
+        if (sys.version_info[0] == 2):
+            result = hmac.compare_digest(bytes(request_hash), bytes(signature))
+        else:
+            result = hmac.compare_digest(request_hash, signature)
+    else:
+        if len(request_hash) != len(signature):
+            raise Exception("Signature invalid")
+        result = 0
+        if isinstance(request_hash, bytes) and isinstance(signature, bytes):
+            for x, y in zip(request_hash, signature):
+                result |= x ^ y
+        else:
+            for x, y in zip(request_hash, signature):
+                result |= ord(x) ^ ord(y)
+        result = result == 0
+
+    if not result:
+        raise Exception("Signature invalid")
+    return result
