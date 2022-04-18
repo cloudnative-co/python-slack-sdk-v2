@@ -12,10 +12,32 @@ class Channels(Base):
     @brief      Slackチャンネル操作用
     """
     path = {
-        "info": "channels.info"
+        "archive": "channels.archive",
+        "info": "channels.info",
+        "list": "channels.list"
     }
 
+    @formation
+    def archive(
+        self, channel: str
+        payload: dict = None
+    ):
+        path = self.path[sys._getframe().f_code.co_name]
+        return self.http_request(method="post", path=path, payload=payload)
+
     def info(self, channel: str, include_locale: bool = False):
+        args = locals()
+        path = self.path[sys._getframe().f_code.co_name]
+        query = get_arguments(args)
+        return self.http_request(method="get", path=path, query=query)
+
+    def list(
+        self,
+        cursor: str = None,
+        exclude_archived: bool = False
+        exclude_members: bool = False
+        limit: int = None,
+    ):
         args = locals()
         path = self.path[sys._getframe().f_code.co_name]
         query = get_arguments(args)
