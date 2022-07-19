@@ -112,10 +112,11 @@ class Base(object):
             for q1 in q[1].split("&"):
                 q1 = q1.split("=")
                 query[q1[0]] = q1[1]
-        if method == "get":
-            query["token"] = self.token
-        elif method == "post":
-            headers["Authorization"] = "Bearer {}".format(self.token)
+        #if method == "get":
+        #    query["token"] = self.token
+        #elif method == "post":
+        #    headers["Authorization"] = "Bearer {}".format(self.token)
+        headers["Authorization"] = "Bearer {}".format(self.token)
         if len(query) > 0:
             url = "{}?{}".format(url, urllib.parse.urlencode(query))
 
